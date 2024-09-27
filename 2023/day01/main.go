@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	utils "github.com/nibtr/aoc/utils"
 )
 
 func main() {
@@ -12,25 +14,22 @@ func main() {
 	var input string
 
 	flag.IntVar(&part, "part", 1, "Run part 1 or 2")
-	flag.StringVar(&input, "input", "", "Choose input")
+	flag.StringVar(&input, "input", "", "Choose input file (relative path)")
 	flag.Parse()
 
-	fmt.Println("Run part", part)
-	fmt.Println("Run input", input)
-
+	content := utils.ReadFile(input)
 	if part == 1 {
-		ans := part1(input)
+		ans := part1(content)
 		fmt.Println("Output:", ans)
 	} else {
-		ans := part1(input)
+		ans := part1(content)
 		fmt.Println("Output:", ans)
 	}
 }
 
 func part1(input string) int {
-	data := strings.TrimRight(input, "\n")
 	sum := 0
-	for _, line := range strings.Split(data, "\n") {
+	for _, line := range strings.Split(input, "\n") {
 		var tens, ones int
 		for i := 0; i < len(line); i++ {
 			if strings.ContainsAny(line[i:i+1], "0123456789") {
