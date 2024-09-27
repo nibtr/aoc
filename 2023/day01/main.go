@@ -48,10 +48,53 @@ func part1(input string) int {
 }
 
 func part2(input string) int {
-	sum := 0
-	for _, line := range strings.Split(input, "\n") {
+	// sum := 0
+	digits := map[string]int{
+		"one":   1,
+		"two":   2,
+		"three": 3,
+		"four":  4,
+		"five":  5,
+		"six":   6,
+		"seven": 7,
+		"eight": 8,
+		"nine":  9,
+	}
 
+	for _, line := range strings.Split(input, "\n") {
+		var tens int
+		step := 1
+
+		for i := 0; i < len(line); i += step {
+			// 3-letter digit
+			if v, ok := digits[line[i:i+3]]; ok {
+				tens = v
+				step = 3
+			} else if v, ok := digits[line[i:i+4]]; ok {
+				tens = v
+				step = 4
+			} else if v, ok := digits[line[i:i+5]]; ok {
+				tens = v
+				step = 5
+			} else {
+				step = 1
+			}
+		}
+
+		fmt.Println(tens)
 	}
 
 	return 0
 }
+
+// aoeightwtwo
+
+// one
+// two
+// six
+// four
+// five
+// nine
+// three
+// seven
+// eight
