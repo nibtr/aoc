@@ -48,3 +48,12 @@ func part1(input string) int {
 	}
 	return sum
 }
+
+func part2(input string) int {
+	sum := 0
+	for _, line := range strings.Split(input, "\n") {
+
+	}
+
+	return 0
+}

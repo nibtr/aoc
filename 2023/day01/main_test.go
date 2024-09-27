@@ -15,3 +15,20 @@ treb7uchet`
 		t.Fatalf("part1() = %v, want %v", got, want)
 	}
 }
+
+func Test_part2(t *testing.T) {
+	input := `two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen`
+
+	want := 281
+	got := part2(input)
+
+	if got != want {
+		t.Fatalf("part2() = %v, want %v", got, want)
+	}
+}
