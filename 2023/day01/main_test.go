@@ -2,33 +2,53 @@ package main
 
 import "testing"
 
+type TestCase struct {
+	name  string
+	input string
+	want  int
+}
+
 func Test_part1(t *testing.T) {
-	input := `1abc2
+	tests := []TestCase{
+		{
+			name: "example1",
+			input: `1abc2
 pqr3stu8vwx
 a1b2c3d4e5f
-treb7uchet`
+treb7uchet`,
+			want: 142,
+		},
+	}
 
-	want := 142
-	got := part1(input)
-
-	if got != want {
-		t.Fatalf("part1() = %v, want %v", got, want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := part1(tc.input); got != tc.want {
+				t.Errorf("part1() = %v, want %v", got, tc.want)
+			}
+		})
 	}
 }
 
 func Test_part2(t *testing.T) {
-	input := `two1nine
+	tests := []TestCase{
+		{
+			name: "example1",
+			input: `two1nine
 eightwothree
 abcone2threexyz
 xtwone3four
 4nineeightseven2
 zoneight234
-7pqrstsixteen`
+7pqrstsixteen`,
+			want: 281,
+		},
+	}
 
-	want := 281
-	got := part2(input)
-
-	if got != want {
-		t.Fatalf("part2() = %v, want %v", got, want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := part2(tc.input); got != tc.want {
+				t.Errorf("part1() = %v, want %v", got, tc.want)
+			}
+		})
 	}
 }

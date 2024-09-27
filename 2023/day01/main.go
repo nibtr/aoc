@@ -14,13 +14,13 @@ func main() {
 
 	flag.IntVar(&part, "part", 1, "Run part 1 or 2")
 	flag.Parse()
+	input := utils.ReadFile("/2023/input/day01.txt")
 
-	content := utils.ReadFile("/2023/input/day01.txt")
 	if part == 1 {
-		ans := part1(content)
+		ans := part1(input)
 		fmt.Println("Output:", ans)
 	} else {
-		ans := part2(content)
+		ans := part2(input)
 		fmt.Println("Output:", ans)
 	}
 }
