@@ -11,18 +11,16 @@ import (
 
 func main() {
 	var part int
-	var input string
 
 	flag.IntVar(&part, "part", 1, "Run part 1 or 2")
-	flag.StringVar(&input, "input", "", "Choose input file (relative path)")
 	flag.Parse()
 
-	content := utils.ReadFile(input)
+	content := utils.ReadFile("/2023/input/day01.txt")
 	if part == 1 {
 		ans := part1(content)
 		fmt.Println("Output:", ans)
 	} else {
-		ans := part1(content)
+		ans := part2(content)
 		fmt.Println("Output:", ans)
 	}
 }
