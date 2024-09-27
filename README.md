@@ -3,6 +3,9 @@
 The repo contains solutions to the [Advent of Code](https://adventofcode.com/)
 problems, written in Go so I can learn more about the language.
 
+>[!NOTE]
+>Still ongoing
+
 Currently there's only year 2023, but I'm looking forward to adding
 more, if I'm not lazy.
 
