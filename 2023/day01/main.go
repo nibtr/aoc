@@ -48,7 +48,7 @@ func part1(input string) int {
 }
 
 func part2(input string) int {
-	// sum := 0
+	sum := 0
 	digits := map[string]int{
 		"one":   1,
 		"two":   2,
@@ -62,39 +62,69 @@ func part2(input string) int {
 	}
 
 	for _, line := range strings.Split(input, "\n") {
-		var tens int
-		step := 1
+		var tens, ones int
 
-		for i := 0; i < len(line); i += step {
-			// 3-letter digit
-			if v, ok := digits[line[i:i+3]]; ok {
-				tens = v
-				step = 3
-			} else if v, ok := digits[line[i:i+4]]; ok {
-				tens = v
-				step = 4
-			} else if v, ok := digits[line[i:i+5]]; ok {
-				tens = v
-				step = 5
-			} else {
-				step = 1
+		// go forward
+		for i := 0; i <= len(line); i++ {
+			if strings.ContainsAny(line[i:i+1], "0123456789") {
+				tens, _ = strconv.Atoi(string(line[i]))
+				break
+			}
+
+			if i+2 < len(line) {
+				if v, ok := digits[line[i:i+3]]; ok {
+					tens = v
+					break
+				}
+			}
+
+			if i+3 < len(line) {
+				if v, ok := digits[line[i:i+4]]; ok {
+					tens = v
+					break
+				}
+			}
+
+			if i+4 < len(line) {
+				if v, ok := digits[line[i:i+5]]; ok {
+					tens = v
+					break
+				}
+			}
+
+		}
+
+		// go backwards
+		for i := len(line) - 1; i >= 0; i-- {
+			if strings.ContainsAny(line[i:i+1], "0123456789") {
+				ones, _ = strconv.Atoi(string(line[i]))
+				break
+			}
+
+			if i-2 >= 0 {
+				if v, ok := digits[line[i-2:i+1]]; ok {
+					ones = v
+					break
+				}
+			}
+
+			if i-3 >= 0 {
+				if v, ok := digits[line[i-3:i+1]]; ok {
+					ones = v
+					break
+				}
+			}
+
+			if i-4 >= 0 {
+				if v, ok := digits[line[i-4:i+1]]; ok {
+					ones = v
+					break
+				}
 			}
 		}
 
-		fmt.Println(tens)
+		sum += tens*10 + ones
 	}
 
-	return 0
+	return sum
 }
-
-// aoeightwtwo
-
-// one
-// two
-// six
-// four
-// five
-// nine
-// three
-// seven
-// eight
