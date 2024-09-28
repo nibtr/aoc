@@ -95,6 +95,10 @@ func hasAdjacentSymbols(matrix []string, row int, startIdx int, endIdx int) bool
 	return valid
 }
 
+func isGear(c byte) bool {
+	return false
+}
+
 func isDigit(c byte) bool {
 	return strings.ContainsAny(string(c), "0123456789")
 }
