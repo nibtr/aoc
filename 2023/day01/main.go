@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 
 	utils "github.com/nibtr/aoc/utils"
 )
@@ -48,6 +49,7 @@ func part1(input string) int {
 }
 
 func part2(input string) int {
+	start := time.Now()
 	sum := 0
 	digits := map[string]int{
 		"one":   1,
@@ -126,5 +128,6 @@ func part2(input string) int {
 		sum += tens*10 + ones
 	}
 
+	fmt.Println(time.Since(start))
 	return sum
 }
