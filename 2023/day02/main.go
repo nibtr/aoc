@@ -57,6 +57,33 @@ func part1(input string) int {
 }
 
 func part2(input string) int {
-	input = ""
-	return 0
+	lines := strings.Split(input, "\n")
+	sum := 0
+	for _, game := range lines {
+		sets := strings.Split(game, ": ")[1]
+		sets = strings.ReplaceAll(sets, ";", ",")
+		picks := strings.Split(sets, ", ")
+
+		maxCubes := map[string]int{
+			"red":   0,
+			"green": 0,
+			"blue":  0,
+		}
+		for _, pick := range picks {
+			num := strings.Split(pick, " ")[0]
+			color := strings.Split(pick, " ")[1]
+
+			if c, _ := strconv.Atoi(num); c > maxCubes[color] {
+				maxCubes[color] = c
+			}
+		}
+
+		product := 1
+		for _, v := range maxCubes {
+			product *= v
+		}
+		sum += product
+	}
+
+	return sum
 }
